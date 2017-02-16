@@ -1,0 +1,41 @@
+{
+  "name": "memoroosh",
+  "version": "0.1.0",
+  "description": "Easy serverless mems generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-debug": "webpack --config webpack.config.js --progress --watch",
+    "lintq": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://oleg_biryukov@bitbucket.org/fox_club/memoroosh.git"
+  },
+  "author": "Fox Club",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/fox_club/memoroosh#readme",
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-preset-es2015-loose-balance": "^1.0.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.15.0",
+    "eslint-plugin-react": "^6.9.0",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3"
+  }
+}
