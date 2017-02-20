@@ -1,14 +1,25 @@
 import { combineReducers } from 'redux';
 
-const defaultReducer = (state = 'HELLO WORLD', action) => {
+const topText = (state = 'Top text', action) => {
     switch (action.type) {
+    case 'SET_TOP_TEXT':
+        return action.value;
+    default:
+        return state;
+    }
+};
+const bottomText = (state = 'Bottom text', action) => {
+    switch (action.type) {
+    case 'SET_BOTTOM_TEXT':
+        return action.value;
     default:
         return state;
     }
 };
 
 const memoRooshApp = combineReducers({
-    defaultReducer
+    topText,
+    bottomText
 });
 
 export default memoRooshApp;

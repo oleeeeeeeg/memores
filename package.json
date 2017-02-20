@@ -1,6 +1,6 @@
 {
   "name": "memoroosh",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Easy serverless mems generator",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.8",
     "babel-plugin-transform-class-properties": "^6.19.0",
     "babel-preset-es2015-loose-balance": "^1.0.0",
