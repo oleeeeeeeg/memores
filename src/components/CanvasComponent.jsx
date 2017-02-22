@@ -17,7 +17,7 @@ export default class CanvasComponent extends Component {
         const ctx = this.refs.canvas.getContext('2d');
         let topText = this.props.topText || '';
         let bottomText = this.props.bottomText || '';
-        ctx.clearRect(0, 0, this.props.width, this.props.height)
+        ctx.clearRect(0, 0, this.props.width, this.props.height)  //todo why eslint not see this?
         ctx.fillText(topText, 100, 100);
         ctx.fillText(bottomText, 100, 400);
     }
@@ -26,7 +26,7 @@ export default class CanvasComponent extends Component {
         return (
             <canvas
                 ref="canvas"
-                className={this.props.className}
+                className={this.props.className || 'canvas-component'}
                 style={this.props.style}
                 width={this.props.width}
                 height={this.props.height}
