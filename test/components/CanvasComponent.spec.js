@@ -5,7 +5,12 @@ import CanvasComponent from '../../src/components/CanvasComponent';
 function setup() {
     const props = {
         setTopText: jest.fn(),
-        height: '600'
+        className: 'canvas-component',
+        width: '',
+        height: '600',
+        style: '',
+        topText: '',
+        bottomText: ''
     };
 
     const enzymeWrapper = shallow(<CanvasComponent {...props} />);

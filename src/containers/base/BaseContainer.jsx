@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import En from './../../localization/En'
+import { Component } from 'react';
+import En from './../../localization/En';
 
 export default class BaseContainer extends Component {
     constructor() {

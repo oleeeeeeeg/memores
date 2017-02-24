@@ -1,8 +1,8 @@
 import BaseContainer from './base/BaseContainer';
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as memoRooshActions from './../actions/index'
+import * as memoRooshActions from './../actions/index';
 import CanvasComponent from './../components/CanvasComponent';
 
 class RootContainer extends BaseContainer {
@@ -14,11 +14,11 @@ class RootContainer extends BaseContainer {
 
     //------------------------------------------------------------------------------------------------------------------
     handleTopTextChange(e) {
-        this.props.actions.setTopText(e.target.value)
+        this.props.actions.setTopText(e.target.value);
     }
 
     handleBottomTextChange(e) {
-        this.props.actions.setBottomText(e.target.value)
+        this.props.actions.setBottomText(e.target.value);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ class RootContainer extends BaseContainer {
                 <input type="text" defaultValue={topText} onChange={this.handleTopTextChange} />
                 <input type="text" defaultValue={bottomText} onChange={this.handleBottomTextChange} />
             </div>
-        )
+        );
     }
 
     renderCanvas(topText) {
@@ -50,7 +50,7 @@ class RootContainer extends BaseContainer {
                 topText={topText || this.props.state.topText}
                 bottomText={this.props.state.bottomText}
             />
-        )
+        );
     }
 
     render() {
