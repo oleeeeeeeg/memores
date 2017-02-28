@@ -10,6 +10,7 @@ class RootContainer extends BaseContainer {
         super();
         this.handleTopTextChange = this.handleTopTextChange.bind(this);
         this.handleBottomTextChange = this.handleBottomTextChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -19,6 +20,22 @@ class RootContainer extends BaseContainer {
 
     handleBottomTextChange(e) {
         this.props.actions.setBottomText(e.target.value);
+    }
+
+    handleImageChange(e) {
+        let imageFile = e.target.files[0];
+        if (imageFile) {
+            let reader = new FileReader();
+            reader.readAsDataURL(imageFile);
+            reader.onloadend = (e) => {
+                let imageBase64String = e.target.result;
+                let image = new Image();
+                image.onload = () => {
+                    this.props.actions.setBackgroundImage(image);
+                };
+                image.src = imageBase64String;
+            }
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -38,6 +55,7 @@ class RootContainer extends BaseContainer {
             <div>
                 <input type="text" defaultValue={topText} onChange={this.handleTopTextChange} />
                 <input type="text" defaultValue={bottomText} onChange={this.handleBottomTextChange} />
+                <input type="file" onChange={this.handleImageChange} />
             </div>
         );
     }
@@ -49,6 +67,7 @@ class RootContainer extends BaseContainer {
                 height='600'
                 topText={topText || this.props.state.topText}
                 bottomText={this.props.state.bottomText}
+                backgroundImage={this.props.state.backgroundImage}
             />
         );
     }

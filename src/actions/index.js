@@ -12,3 +12,9 @@ export const setBottomText = (value) => {
         value
     };
 };
+export const setBackgroundImage = (value) => {
+    return {
+        type: ActionTypes.SET_BACKGROUND_IMAGE,
+        value
+    };
+};

@@ -17,7 +17,11 @@ export default class CanvasComponent extends Component {
         const ctx = this.refs.canvas.getContext('2d');
         let topText = this.props.topText || '';
         let bottomText = this.props.bottomText || '';
+        let backgroundImage = this.props.backgroundImage;
         ctx.clearRect(0, 0, this.props.width, this.props.height);
+        if (backgroundImage) {
+            ctx.drawImage(backgroundImage, 0, 0, this.props.width, this.props.height)
+        }
         ctx.fillText(topText, 100, 100);
         ctx.fillText(bottomText, 100, 400);
     }
