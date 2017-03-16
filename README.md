@@ -1,6 +1,6 @@
 # README #
 
-This is easy serverless mems generator
+This is easy client-side mems generator
 
 ### Where I can see demo? ###
 
