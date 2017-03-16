@@ -5,11 +5,11 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import RootContainer from './containers/RootContainer';
-import memoRooshApp from './reducers';
+import memoResApp from './reducers';
 
 import './less/main.less';
 
-let store = createStore(memoRooshApp);
+let store = createStore(memoResApp);
 
 render(
     <Provider store={store}>

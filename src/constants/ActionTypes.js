@@ -1,3 +1,5 @@
 export const SET_TOP_TEXT = 'SET_TOP_TEXT';
 export const SET_BOTTOM_TEXT = 'SET_BOTTOM_TEXT';
+export const SET_TEXT_SIZE = 'SET_TEXT_SIZE';
 export const SET_BACKGROUND_IMAGE = 'SET_BACKGROUND_IMAGE';
+export const SET_MEM_IMAGE = 'SET_MEM_IMAGE';

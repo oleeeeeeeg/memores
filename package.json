@@ -1,5 +1,5 @@
 {
-  "name": "memoroosh",
+  "name": "memores",
   "version": "0.1.1",
   "description": "Easy serverless mems generator",
   "main": "index.js",

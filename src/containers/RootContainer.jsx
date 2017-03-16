@@ -2,8 +2,9 @@ import BaseContainer from './base/BaseContainer';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as memoRooshActions from './../actions/index';
+import * as memoResActions from './../actions/index';
 import CanvasComponent from './../components/CanvasComponent';
+import * as MainConstants from './../constants/MainConstants'
 
 class RootContainer extends BaseContainer {
     constructor() {
@@ -11,6 +12,8 @@ class RootContainer extends BaseContainer {
         this.handleTopTextChange = this.handleTopTextChange.bind(this);
         this.handleBottomTextChange = this.handleBottomTextChange.bind(this);
         this.handleImageChange = this.handleImageChange.bind(this);
+        this.handleTextSizeChange = this.handleTextSizeChange.bind(this);
+        this.handleMemGenerated = this.handleMemGenerated.bind(this);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -20,6 +23,11 @@ class RootContainer extends BaseContainer {
 
     handleBottomTextChange(e) {
         this.props.actions.setBottomText(e.target.value);
+    }
+
+    handleTextSizeChange(e) {
+        let textSize = parseInt(e.target.value);
+        this.props.actions.setTextSize(textSize);
     }
 
     handleImageChange(e) {
@@ -38,6 +46,10 @@ class RootContainer extends BaseContainer {
         }
     }
 
+    handleMemGenerated(e) {
+        this.props.actions.setMemImage(e);
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     renderTitle() {
         let titleText = this.getText('TITLE_TEXT');
@@ -51,11 +63,18 @@ class RootContainer extends BaseContainer {
     renderInputs() {
         let topText = this.getText('TOP_TEXT');
         let bottomText = this.getText('BOTTOM_TEXT');
+        let textSizeText = this.getText('TEXT_SIZE');
+        let defaultTextSize = MainConstants.DEFAULT_TEXT_SIZE;
+
         return (
             <div>
-                <input type="text" defaultValue={topText} onChange={this.handleTopTextChange} />
-                <input type="text" defaultValue={bottomText} onChange={this.handleBottomTextChange} />
                 <input type="file" onChange={this.handleImageChange} />
+                <div>
+                    <input type="text" defaultValue={topText} onChange={this.handleTopTextChange} />
+                    <input type="text" defaultValue={bottomText} onChange={this.handleBottomTextChange} />
+                    <input type="number" defaultValue={defaultTextSize} onChange={this.handleTextSizeChange} />
+                    <label>{textSizeText}</label>
+                </div>
             </div>
         );
     }
@@ -63,12 +82,36 @@ class RootContainer extends BaseContainer {
     renderCanvas(topText) {
         return (
             <CanvasComponent
-                width='1000'
+                ref='canvasComponent'
+                width='600'
                 height='600'
                 topText={topText || this.props.state.topText}
                 bottomText={this.props.state.bottomText}
+                textSize={this.props.state.textSize}
                 backgroundImage={this.props.state.backgroundImage}
+                onMemGenerated={this.handleMemGenerated}
             />
+        );
+    }
+
+    renderSave() {
+        let saveText = this.getText('SAVE_TEXT');
+        let imageText = this.getText('IMAGE_TEXT');
+        if (!this.refs.canvasComponent) {
+            return null;
+        }
+
+        let image = this.props.state.memImage;
+
+        return (
+            <a
+                className="save-button"
+                href={image}
+                download={imageText}
+                onClick={null}
+            >
+                {saveText}
+            </a>
         );
     }
 
@@ -78,6 +121,7 @@ class RootContainer extends BaseContainer {
                 {this.renderTitle()}
                 {this.renderInputs()}
                 {this.renderCanvas()}
+                {this.renderSave()}
             </div>
         );
     }
@@ -95,7 +139,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(memoRooshActions, dispatch)
+        actions: bindActionCreators(memoResActions, dispatch)
     };
 }
 
