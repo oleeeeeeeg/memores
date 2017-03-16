@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as memoResActions from './../actions/index';
 import CanvasComponent from './../components/CanvasComponent';
-import * as MainConstants from './../constants/MainConstants'
+import * as MainConstants from './../constants/MainConstants';
 
 class RootContainer extends BaseContainer {
     constructor() {
@@ -42,7 +42,7 @@ class RootContainer extends BaseContainer {
                     this.props.actions.setBackgroundImage(image);
                 };
                 image.src = imageBase64String;
-            }
+            };
         }
     }
 

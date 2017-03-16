@@ -43,7 +43,7 @@ export default class CanvasComponent extends Component {
             ctx.strokeText(bottomText, 300, height - textSize / 5);
 
             let memImage = this.refs.canvas.toDataURL('image/png');
-            this.props.onMemGenerated(memImage)
+            this.props.onMemGenerated(memImage);
         }
 
     }
@@ -63,12 +63,13 @@ export default class CanvasComponent extends Component {
 }
 
 CanvasComponent.propTypes = {
-    className: PropTypes.string.isRequired,
-    style: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    style: PropTypes.string,
     width: PropTypes.string.isRequired,
     height: PropTypes.string.isRequired,
     topText: PropTypes.string.isRequired,
     bottomText: PropTypes.string.isRequired,
+    backgroundImage: PropTypes.string,
     textSize: PropTypes.number.isRequired,
     onMemGenerated: PropTypes.func.isRequired
 };
