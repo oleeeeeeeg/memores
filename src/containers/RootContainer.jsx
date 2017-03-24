@@ -26,7 +26,7 @@ class RootContainer extends BaseContainer {
     }
 
     handleTextSizeChange(e) {
-        let textSize = parseInt(e.target.value);
+        let textSize = parseInt(e.target.value) || 0;
         this.props.actions.setTextSize(textSize);
     }
 

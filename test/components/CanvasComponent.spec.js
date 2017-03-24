@@ -10,7 +10,11 @@ function setup() {
         height: '600',
         style: '',
         topText: '',
-        bottomText: ''
+        bottomText: '',
+        textSize: 60,
+        onMemGenerated: function () {
+            return null;
+        }
     };
 
     const enzymeWrapper = shallow(<CanvasComponent {...props} />);

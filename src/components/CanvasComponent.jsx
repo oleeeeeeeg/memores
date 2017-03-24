@@ -69,7 +69,7 @@ CanvasComponent.propTypes = {
     height: PropTypes.string.isRequired,
     topText: PropTypes.string.isRequired,
     bottomText: PropTypes.string.isRequired,
-    backgroundImage: PropTypes.string,
+    backgroundImage: PropTypes.object,
     textSize: PropTypes.number.isRequired,
     onMemGenerated: PropTypes.func.isRequired
 };
