@@ -1,1 +1,3 @@
 export const DEFAULT_TEXT_SIZE = 50;
+export const DEFAULT_CANVAS_WIDTH = 600;
+export const DEFAULT_CANVAS_HEIGHT = 600;

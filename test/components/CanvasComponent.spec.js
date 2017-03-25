@@ -6,8 +6,8 @@ function setup() {
     const props = {
         setTopText: jest.fn(),
         className: 'canvas-component',
-        width: '',
-        height: '600',
+        width: 0,
+        height: 600,
         style: '',
         topText: '',
         bottomText: '',
@@ -31,7 +31,7 @@ describe('components', () => {
             const { enzymeWrapper } = setup();
 
             expect(enzymeWrapper.find('canvas').hasClass('canvas-component')).toBe(true);
-            expect(enzymeWrapper.find('canvas').props().height).toBe('600');
+            expect(enzymeWrapper.find('canvas').props().height).toBe(600);
 
         });
     });

@@ -22,25 +22,19 @@ export default class CanvasComponent extends Component {
         ctx.clearRect(0, 0, this.props.width, this.props.height);
         if (backgroundImage) {
             let startX, startY, width, height;
-            if (backgroundImage.width >  backgroundImage.height) {
-                startX = 0;
-                width = Number(this.props.width);
-                startY = 0;
-                height = Number(this.props.height * (backgroundImage.height / backgroundImage.width));
-            } else {
-                width = Number(this.props.width * (backgroundImage.width /  backgroundImage.height));
-                startX = Number((this.props.width / 2) - (width / 2));
-                startY = 0;
-                height = Number(this.props.height);
-            }
+            startX = 0;
+            startY = 0;
+            width = this.props.width;
+            height = this.props.height;
+
             ctx.drawImage(backgroundImage, startX, startY, width, height);
             ctx.textAlign = 'center';
             ctx.font = `${textSize}px Arial`;
             ctx.fillStyle = '#ffffff';
-            ctx.fillText(topText, 300, textSize);
-            ctx.strokeText(topText, 300, textSize);
-            ctx.fillText(bottomText, 300, height - textSize / 5);
-            ctx.strokeText(bottomText, 300, height - textSize / 5);
+            ctx.fillText(topText, width / 2, textSize);
+            ctx.strokeText(topText, width / 2, textSize);
+            ctx.fillText(bottomText, width / 2, height - textSize / 5);
+            ctx.strokeText(bottomText, width / 2, height - textSize / 5);
 
             let memImage = this.refs.canvas.toDataURL('image/png');
             this.props.onMemGenerated(memImage);
@@ -65,8 +59,8 @@ export default class CanvasComponent extends Component {
 CanvasComponent.propTypes = {
     className: PropTypes.string,
     style: PropTypes.string,
-    width: PropTypes.string.isRequired,
-    height: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
     topText: PropTypes.string.isRequired,
     bottomText: PropTypes.string.isRequired,
     backgroundImage: PropTypes.object,

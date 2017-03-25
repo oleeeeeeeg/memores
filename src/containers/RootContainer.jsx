@@ -80,11 +80,28 @@ class RootContainer extends BaseContainer {
     }
 
     renderCanvas(topText) {
+        let backgroundImage = this.props.state.backgroundImage;
+        if (!backgroundImage) {
+            return null;
+        }
+        let imageWidth = backgroundImage.width;
+        let imageHeight = backgroundImage.height;
+        let canvasWidth = MainConstants.DEFAULT_CANVAS_WIDTH;
+        let canvasHeight = MainConstants.DEFAULT_CANVAS_HEIGHT;
+        if (!imageWidth || !imageHeight) {
+            return null;
+        }
+        if (imageWidth >= imageHeight) {
+            canvasHeight = canvasWidth * (imageHeight / imageWidth);
+        } else {
+            canvasWidth = canvasHeight * (imageWidth / imageHeight);
+        }
+
         return (
             <CanvasComponent
                 ref='canvasComponent'
-                width='600'
-                height='600'
+                width={canvasWidth}
+                height={canvasHeight}
                 topText={topText || this.props.state.topText}
                 bottomText={this.props.state.bottomText}
                 textSize={this.props.state.textSize}
