@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "6.10"
+install:
+  npm install -g webpack
+  - npm install
+script:
+  # run build script specified in package.json
+  #- npm run ci
+  - webpack
+  # call script for deploying of produced artifacts
+  #- bash ./.travis-deploy.sh
+deploy:
+  provider: pages
+  local-dir: build
+  skip_cleanup: true
+  github_token: $GH_TOKEN
+  on:
+    branch: master
