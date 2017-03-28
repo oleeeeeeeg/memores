@@ -14,6 +14,7 @@ class RootContainer extends BaseContainer {
         this.handleImageChange = this.handleImageChange.bind(this);
         this.handleTextSizeChange = this.handleTextSizeChange.bind(this);
         this.handleMemGenerated = this.handleMemGenerated.bind(this);
+        this.onUploadImageClickHandler = this.onUploadImageClickHandler.bind(this);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -50,31 +51,39 @@ class RootContainer extends BaseContainer {
         this.props.actions.setMemImage(e);
     }
 
+    onUploadImageClickHandler() {
+        let inputField = this.refs.uploadImage;
+        inputField.click();
+    }
+
     //------------------------------------------------------------------------------------------------------------------
     renderTitle() {
         let titleText = this.getText('TITLE_TEXT');
+        let description = this.getText('DESCRIPTION');
         return (
             <div className="root-container-title">
-                {titleText}
+                {titleText} - {description}
             </div>
         );
     }
 
     renderInputs() {
+        let uploadImage = this.getText('UPLOAD_IMAGE');
         let topText = this.getText('TOP_TEXT');
         let bottomText = this.getText('BOTTOM_TEXT');
         let textSizeText = this.getText('TEXT_SIZE');
         let defaultTextSize = MainConstants.DEFAULT_TEXT_SIZE;
 
         return (
-            <div>
-                <input type="file" onChange={this.handleImageChange} />
-                <div>
-                    <input type="text" defaultValue={topText} onChange={this.handleTopTextChange} />
-                    <input type="text" defaultValue={bottomText} onChange={this.handleBottomTextChange} />
-                    <input type="number" defaultValue={defaultTextSize} onChange={this.handleTextSizeChange} />
-                    <label>{textSizeText}</label>
+            <div className="inputs-section">
+                <div className="inputs-section__file-custom" onClick={this.onUploadImageClickHandler}>
+                    {uploadImage}
                 </div>
+                <input ref="uploadImage" className="inputs-section__file" type="file" accept=".png,.jpg,.jpeg,.bmp" onChange={this.handleImageChange} />
+                <input className="inputs-section__top-text" type="text" defaultValue={topText} onChange={this.handleTopTextChange} />
+                <input className="inputs-section__bottom-text" type="text" defaultValue={bottomText} onChange={this.handleBottomTextChange} />
+                <input className="inputs-section__text-size-value" type="number" defaultValue={defaultTextSize} onChange={this.handleTextSizeChange} />
+                <label className="inputs-section__text-size-label" >{textSizeText}</label>
             </div>
         );
     }
@@ -98,16 +107,19 @@ class RootContainer extends BaseContainer {
         }
 
         return (
-            <CanvasComponent
-                ref='canvasComponent'
-                width={canvasWidth}
-                height={canvasHeight}
-                topText={topText || this.props.state.topText}
-                bottomText={this.props.state.bottomText}
-                textSize={this.props.state.textSize}
-                backgroundImage={this.props.state.backgroundImage}
-                onMemGenerated={this.handleMemGenerated}
-            />
+            <div className="canvas-section">
+                <CanvasComponent
+                    className='canvas-component'
+                    ref='canvasComponent'
+                    width={canvasWidth}
+                    height={canvasHeight}
+                    topText={topText || this.props.state.topText}
+                    bottomText={this.props.state.bottomText}
+                    textSize={this.props.state.textSize}
+                    backgroundImage={this.props.state.backgroundImage}
+                    onMemGenerated={this.handleMemGenerated}
+                />
+            </div>
         );
     }
 

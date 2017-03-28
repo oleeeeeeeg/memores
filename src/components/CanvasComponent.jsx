@@ -29,7 +29,7 @@ export default class CanvasComponent extends Component {
 
             ctx.drawImage(backgroundImage, startX, startY, width, height);
             ctx.textAlign = 'center';
-            ctx.font = `${textSize}px Arial`;
+            ctx.font = `${textSize}px Impact`;
             ctx.fillStyle = '#ffffff';
             ctx.fillText(topText, width / 2, textSize);
             ctx.strokeText(topText, width / 2, textSize);
