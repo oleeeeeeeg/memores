@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "6.10"
 install:
-  - npm i -g yarn && yarn
+  - npm install
 before_script:
     - webpack
 deploy:
