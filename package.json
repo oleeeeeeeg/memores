@@ -17,8 +17,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/fox_club/memoroosh#readme",
   "dependencies": {
-    "react": "^15.4.1",
-    "react-dom": "^15.4.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0"
   },
